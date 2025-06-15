@@ -1,0 +1,1259 @@
+/* style.css - Nueva versión moderna para somba Chile */
+
+/* --- Variables de Colores --- */
+:root {
+    --primary-color: #004d40;   /* Verde Oscuro / Turquesa Oscuro (Color principal de la marca) */
+    --secondary-color: #1a5e63; /* Un tono de azul-verde para acentos */
+    --accent-color: #ffc107;    /* Amarillo/Dorado para botones y elementos llamativos */
+    --text-dark: #333333;       /* Texto oscuro principal */
+    --text-light: #555555;      /* Texto secundario / párrafos */
+    --bg-light: #f8f9fa;        /* Fondo claro para secciones */
+    --bg-dark: #212529;         /* Fondo oscuro para footer y secciones de contraste */
+    --white: #ffffff;
+    --gray-border: #e0e0e0;
+}
+
+/* --- Base y Tipografía --- */
+body {
+    font-family: 'Roboto', sans-serif; /* Fuente moderna y legible. ¡Recuerda añadirla en HTML! */
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.7; /* Mayor interlineado para mejor lectura */
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; /* Fuente impactante para títulos. ¡Añadir en HTML! */
+    color: var(--primary-color);
+    margin-bottom: 0.8em;
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Encabezado (Header) --- */
+header {
+    background-color: var(--white);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* somba suave para un efecto flotante */
+    position: sticky; /* Sticky header */
+    top: 0;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700; /* Negrita */
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: var(--secondary-color);
+}
+
+.logo img { /* Estilo si usas una imagen para el logo */
+    height: 50px; /* Ajusta según el tamaño de tu logo */
+    width: auto;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: 10px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after { /* Efecto de subrayado moderno */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+
+/* --- Botones --- */
+.button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 50px; /* Bordes redondeados para un look moderno */
+    font-weight: 600; /* Seminegrita */
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.button.secondary {
+    background-color: var(--text-light);
+}
+
+.button.secondary:hover {
+    background-color: #444;
+}
+
+.button.primary { /* Botón principal, quizás para un CTA destacado */
+    background-color: var(--accent-color);
+    color: var(--text-dark); /* Texto oscuro para contraste en botón amarillo */
+}
+
+.button.primary:hover {
+    background-color: #e0ac08; /* Tono más oscuro de amarillo */
+}
+
+/* --- Secciones Generales --- */
+section {
+    padding: 80px 0; /* Más padding para más "aire" */
+    position: relative;
+    overflow: hidden; /* Para contener elementos flotantes si los hubiera */
+}
+
+.light-bg {
+    background-color: var(--bg-light);
+}
+
+.dark-bg {
+    background-color: var(--bg-dark);
+    color: var(--white);
+}
+
+.dark-bg h2, .dark-bg h3, .dark-bg p {
+    color: var(--white); /* Asegurar que el texto sea visible */
+}
+
+/* --- Sección Hero (index.html) --- */
+#hero {
+    /* Restablece esta línea, ¡asegúrate de que la ruta de la imagen sea correcta! */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('imagenes/puerto.jpg') no-repeat center center/cover;
+    background-attachment: scroll; /* O 'fixed' si quieres que la imagen no se mueva con el scroll */
+    color: var(--white);
+    padding: 120px 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+    position: relative; /* Mantén esto si quieres el overlay pseudo-elemento */
+    overflow: hidden;
+}
+
+/* Elimina o comenta las siguientes reglas CSS que eran para el video */
+/*
+.hero-video {
+    display: none;
+}
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+#hero .hero-content {
+    position: relative;
+    z-index: 1;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-video {
+        display: none;
+    }
+    #hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('imagenes/camion-ampliroll-fondo.jpg') no-repeat center center/cover;
+        background-attachment: scroll;
+    }
+    #hero::before {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}
+*/
+
+#hero .hero-content { /* Contenido centrado sobre la imagen */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#hero h1 {
+    font-size: 3.5em; /* Título grande y audaz */
+    color: var(--white);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+#hero p {
+    font-size: 1.4em;
+    margin-bottom: 40px;
+    color: rgba(255,255,255,0.9);
+}
+
+.hero-image { /* Remover este estilo ya que la imagen es de fondo */
+    display: none;
+}
+
+/* --- Sección Servicios Destacados (index.html) --- */
+#servicios-destacados {
+    background-color: var(--white);
+    text-align: center;
+}
+
+#servicios-destacados h2 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+#servicios-destacados h2::after { /* Subrayado decorativo */
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px; /* Más espacio entre elementos */
+}
+
+.servicio {
+    background-color: var(--bg-light);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* somba más pronunciada */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.servicio:hover {
+    transform: translateY(-5px); /* Efecto al pasar el mouse */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.servicio img {
+    max-width: 90px;
+    height: auto;
+    margin-bottom: 20px;
+    filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.1)); /* somba para iconos */
+}
+
+.servicio h3 {
+    font-size: 1.6em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.servicio p {
+    color: var(--text-light);
+    font-size: 1em;
+}
+
+/* --- Sección Por Qué Elegir somba (index.html) --- */
+#por-que-somba {
+    background-color: var(--bg-dark);
+    color: var(--white);
+    text-align: center;
+}
+
+#por-que-somba h2 {
+    color: var(--white);
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+#por-que-somba h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+.por-que-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.por-que-item {
+    background-color: rgba(255,255,255,0.08); /* Fondo semitransparente */
+    padding: 30px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    text-align: left; /* Alineado a la izquierda para mejor lectura */
+}
+
+.por-que-item:hover {
+    background-color: rgba(255,255,255,0.15);
+}
+
+.por-que-item h3 {
+    font-size: 1.4em;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.por-que-item p {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95em;
+}
+
+/* --- Sección Contacto Rápido (index.html) --- */
+#contacto-rapido {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 60px 0;
+}
+
+#contacto-rapido h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+#contacto-rapido p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+/* --- Pie de Página (Footer) --- */
+footer {
+    background-color: var(--bg-dark);
+    color: var(--white);
+    padding: 40px 0;
+    font-size: 0.9em;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Para que se ajuste en móviles */
+}
+
+.footer-info p {
+    margin: 5px 0;
+    color: rgba(255,255,255,0.8);
+}
+
+.footer-info a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-info a:hover {
+    color: var(--white);
+}
+
+.social-links a {
+    margin-left: 20px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.social-links a:hover {
+    opacity: 1;
+}
+
+.social-links img {
+    width: 30px;
+    height: 30px;
+}
+
+
+/* --- Estilos para las páginas de sub-secciones (Nosotros, Servicios, Contacto) --- */
+#page-hero {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 80px 0;
+    text-align: center;
+    margin-bottom: 60px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#page-hero h1 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: var(--white);
+}
+
+#page-hero p {
+    font-size: 1.3em;
+    max-width: 800px;
+    margin: 0 auto;
+    color: rgba(255,255,255,0.9);
+}
+
+/* Colores específicos para las secciones hero de subpáginas (opcional) */
+.nosotros-hero {
+    background-color: var(--secondary-color);
+}
+.servicios-hero {
+    background-color: var(--primary-color);
+}
+.contacto-hero {
+    background-color: var(--accent-color);
+    color: var(--text-dark); /* Asegurar contraste */
+}
+.contacto-hero h1, .contacto-hero p {
+    color: var(--text-dark);
+}
+
+/* --- Página Nosotros --- */
+#our-story, #mission-vision, #our-team {
+    padding: 60px 0;
+}
+
+#our-story {
+    background-color: var(--white);
+    padding-bottom: 40px; /* Un poco menos de padding si hay otra sección debajo */
+}
+
+#our-story h2, #mission-vision h2, #our-team h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+#our-story h2::after, #mission-vision h2::after, #our-team h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+#mission-vision {
+    background-color: var(--bg-light);
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+#mission-vision .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.mv-item {
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px; /* Limita el ancho para que no sean demasiado grandes */
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mv-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.mv-item h3 {
+    color: var(--secondary-color);
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.mv-item ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+.mv-item ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 30px;
+    font-size: 1em;
+    color: var(--text-light);
+}
+
+.mv-item ul li::before {
+    content: '\2713'; /* Unicode checkmark */
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+
+#our-team {
+    background-color: var(--white);
+    text-align: center;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.team-member {
+    background-color: var(--bg-light);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.team-member img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid var(--primary-color); /* Borde alrededor de la foto */
+    box-shadow: 0 0 0 5px rgba(0,77,64,0.1); /* Efecto de aura */
+}
+
+.team-member h4 {
+    font-size: 1.4em;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.team-member p {
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+/* --- Página Servicios --- */
+#main-services {
+    background-color: var(--bg-light);
+}
+
+.service-item {
+    background-color: var(--white);
+    padding: 40px;
+    margin-bottom: 40px; /* Más espacio entre ítems */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.service-item.light-bg { /* Para alternar colores de fondo si se desea */
+    background-color: var(--white);
+}
+
+.service-item img {
+    max-width: 120px; /* Iconos más grandes */
+    height: auto;
+    margin-bottom: 30px;
+    filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.1));
+}
+
+.service-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.service-item ul {
+    text-align: left;
+    list-style: none; /* Quitamos los puntos por defecto */
+    padding-left: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.service-item ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 30px;
+    color: var(--text-light);
+}
+
+.service-item ul li::before {
+    content: '\2713'; /* Unicode checkmark */
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#cta-servicios {
+    background-color: var(--secondary-color); /* Otro color para esta CTA */
+    color: var(--white);
+    padding: 60px 0;
+    text-align: center;
+}
+
+#cta-servicios h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+#cta-servicios p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+/* --- Página Contacto --- */
+#contact-info-form {
+    background-color: var(--bg-light);
+    padding: 60px 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 50px; /* Más espacio entre columnas */
+}
+
+.contact-details, .contact-form {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.contact-details h2, .contact-form h2 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.contact-details ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.contact-details ul li {
+    margin-bottom: 20px; /* Más espacio entre ítems de contacto */
+    font-size: 1.1em;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+}
+
+.contact-details ul li strong {
+    color: var(--text-dark);
+    margin-right: 10px;
+}
+
+.contact-details ul li a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-details ul li a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.social-contact {
+    margin-top: 30px;
+}
+
+.social-contact h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.social-contact a img {
+    width: 40px; /* Iconos de redes sociales más grandes */
+    height: 40px;
+    margin-right: 15px;
+    transition: transform 0.2s ease;
+}
+
+.social-contact a img:hover {
+    transform: scale(1.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.05em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: calc(100% - 24px); /* Ajusta para padding */
+    padding: 12px;
+    border: 1px solid var(--gray-border);
+    border-radius: 8px; /* Bordes más redondeados */
+    font-size: 1em;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0,77,64,0.2);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form .button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+#location-map {
+    background-color: var(--white);
+    padding-top: 60px;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+#location-map h2 {
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    color: var(--primary-color);
+}
+
+.map-container {
+    border
+}
+
+@media (max-width: 992px) { /* Este breakpoint es importante */
+    /* ... otros estilos responsivos ... */
+
+    /* Estilos de navegación que se deberían aplicar */
+    nav ul {
+        flex-direction: column; /* Esto hace que los elementos del menú se apilen */
+        width: 100%;
+        align-items: center; /* Centra los elementos apilados */
+    }
+
+    nav ul li {
+        margin: 0 0 10px 0; /* Espacio entre los ítems apilados */
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        display: block; /* Hace que los enlaces ocupen todo el ancho */
+        padding: 10px 0;
+    }
+    /* ... */
+}
+
+@media (max-width: 768px) { /* Este breakpoint es el más importante para la hamburguesa */
+    header .container {
+        flex-direction: row; /* Para que el logo y la hamburguesa queden lado a lado */
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hamburger {
+        display: block; /* Mostrar la hamburguesa */
+    }
+
+    .main-nav { /* Este es el contenedor del menú que debe ocultarse */
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        height: 100%;
+        background-color: var(--bg-dark);
+        padding-top: 80px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+        transform: translateX(100%); /* Ocultar por defecto */
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+        overflow-y: auto;
+    }
+
+    .main-nav ul { /* Reajuste para los ítems del menú móvil */
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+    /* ... */
+}
+
+/* style.css (añadir al final del archivo o en la sección de header) */
+
+/* --- Menú Hamburguesa para Móviles --- */
+.hamburger {
+    display: none; /* Oculto por defecto en escritorio */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Asegura que esté por encima del menú */
+}
+
+.hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--primary-color); /* Color de las líneas de la hamburguesa */
+    transition: all 0.3s ease-in-out;
+    border-radius: 2px;
+}
+
+/* Animación de la hamburguesa al abrir/cerrar */
+.hamburger.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Estilos para el menú cuando está abierto en móvil */
+.main-nav.is-open {
+    transform: translateX(0);
+}
+
+/* Media query para pantallas más pequeñas (móviles) */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: row; /* Mantener logo y hamburguesa en fila */
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hamburger {
+        display: block; /* Muestra el botón de hamburguesa en móviles */
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%; /* Ancho del menú desplegable */
+        height: 100%;
+        background-color: var(--bg-dark); /* Fondo oscuro para el menú móvil */
+        color: var(--white);
+        padding-top: 80px; /* Espacio para el logo y la hamburguesa */
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+        transform: translateX(100%); /* Oculto por defecto */
+        transition: transform 0.3s ease-in-out;
+        z-index: 999; /* Por debajo de la hamburguesa, pero por encima del contenido */
+        overflow-y: auto; /* Permite scroll si el menú es muy largo */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start; /* Alinea los ítems a la izquierda */
+        padding: 20px;
+    }
+
+    .main-nav ul li {
+        margin: 0 0 15px 0; /* Espacio entre ítems */
+        width: 100%;
+    }
+
+    .main-nav ul li a {
+        color: var(--white); /* Color del texto del menú en móvil */
+        font-size: 1.2em;
+        padding: 12px 15px;
+        border-radius: 5px;
+        width: calc(100% - 30px); /* Ajusta el ancho para el padding */
+        text-align: left; /* Alinea el texto a la izquierda */
+    }
+
+    .main-nav ul li a:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+
+    .main-nav ul li a::after { /* Elimina el efecto de subrayado para el menú móvil si no lo quieres */
+        display: none;
+    }
+}
+
+/* style.css (añadir al final) */
+
+/* --- Sección Nuestros Clientes (nosotros.html) --- */
+#our-clients {
+    padding: 60px 0; /* Un poco menos de padding que otras secciones principales si es una sub-sección */
+    text-align: center;
+    background-color: var(--bg-light); /* Para que sea un fondo claro */
+}
+
+#our-clients h2 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+    color: var(--primary-color);
+}
+
+#our-clients h2::after { /* Subrayado decorativo */
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+#our-clients .section-description {
+    font-size: 1.1em;
+    color: var(--text-light);
+    max-width: 800px;
+    margin: 0 auto 50px auto; /* Centrar y más espacio inferior */
+}
+
+.clients-grid {
+    display: grid;
+    /* Grid de columnas que se ajusta automáticamente */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px; /* Espacio entre los logos */
+    align-items: center; /* Centra verticalmente los logos */
+    justify-items: center; /* Centra horizontalmente los logos */
+    padding: 0 20px; /* Padding para que los logos no toquen los bordes en móvil */
+}
+
+.client-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px; /* Espacio interno para el logo */
+    background-color: var(--white); /* Fondo blanco para el logo */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* somba suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100px; /* Altura fija para uniformidad */
+}
+
+.client-logo:hover {
+    transform: translateY(-5px); /* Pequeño efecto al pasar el mouse */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.client-logo img {
+    max-width: 100%; /* La imagen no se desbordará de su contenedor */
+    max-height: 80px; /* Altura máxima para la imagen dentro del contenedor */
+    width: auto;
+    filter: grayscale(100%); /* Logos en escala de grises por defecto para un look limpio */
+    opacity: 0.7;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.client-logo img:hover {
+    filter: grayscale(0%); /* Color al pasar el mouse */
+    opacity: 1;
+}
+
+/* --- Responsivo para la sección de clientes --- */
+@media (max-width: 768px) {
+    .clients-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Más pequeños en móviles */
+        gap: 20px;
+    }
+    .client-logo {
+        height: 80px;
+    }
+    .client-logo img {
+        max-height: 60px;
+    }
+}
+
+/* style.css (añadir al final) */
+
+/* --- Sección Clientes en el Index (index.html) --- */
+#index-clients {
+    padding: 80px 0; /* Buen padding para que respire */
+    text-align: center;
+    background-color: var(--white); /* Otro fondo blanco para contraste */
+}
+
+#index-clients h2 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+    color: var(--primary-color);
+}
+
+#index-clients h2::after { /* Subrayado decorativo */
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+#index-clients .section-description {
+    font-size: 1.1em;
+    color: var(--text-light);
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+.clients-strip {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los logos se envuelvan si no caben */
+    justify-content: center; /* Centra los logos horizontalmente */
+    align-items: center; /* Centra los logos verticalmente */
+    gap: 40px; /* Espacio generoso entre los logos */
+    margin-bottom: 40px; /* Espacio antes del botón */
+}
+
+.clients-strip img {
+    max-width: 160px; /* Tamaño máximo para los logos en la tira */
+    max-height: 80px; /* Altura máxima para uniformidad */
+    width: auto;
+    filter: grayscale(100%); /* Logos en escala de grises por defecto */
+    opacity: 0.7;
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    padding: 10px; /* Añade un poco de padding alrededor del logo dentro de la imagen */
+}
+
+.clients-strip img:hover {
+    filter: grayscale(0%); /* Color al pasar el mouse */
+    opacity: 1;
+    transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
+}
+
+.center-button {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* --- Responsivo para la sección de clientes en el index --- */
+@media (max-width: 768px) {
+    .clients-strip {
+        gap: 20px; /* Reducir espacio en móviles */
+    }
+    .clients-strip img {
+        max-width: 120px; /* Logos más pequeños en móviles */
+        max-height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .clients-strip img {
+        max-width: 100px; /* Aún más pequeños en pantallas muy chicas */
+        max-height: 50px;
+    }
+}
+
+/* style.css (añadir al final) */
+
+/* --- Sección Alcance Operativo (Común para Index y Servicios) --- */
+#coverage-area, #coverage-area-services {
+    padding: 80px 0;
+    text-align: center;
+}
+
+#coverage-area { /* Estilo específico para el index si tiene fondo oscuro */
+    background-color: var(--bg-dark);
+    color: var(--white);
+}
+
+#coverage-area h2, #coverage-area .section-description, #coverage-area .coverage-details p, #coverage-area .coverage-details ul li {
+    color: var(--white); /* Asegura que el texto blanco contraste con fondo oscuro */
+}
+
+#coverage-area-services { /* Estilo específico para servicios si tiene fondo claro */
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+#coverage-area h2, #coverage-area-services h2 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+#coverage-area h2::after, #coverage-area-services h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+.coverage-details {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.coverage-details p {
+    margin-bottom: 25px;
+}
+
+.coverage-details .coverage-icon { /* Si decides usar una imagen o icono grande */
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 30px;
+    filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.1));
+}
+
+.coverage-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 30px; /* Espacio vertical y horizontal */
+}
+
+.coverage-list li {
+    background-color: rgba(0,77,64,0.1); /* Un fondo suave para cada ítem */
+    padding: 8px 15px;
+    border-radius: 25px;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+#coverage-area .coverage-list li { /* Estilo para fondo oscuro */
+    background-color: rgba(255,255,255,0.1);
+    color: var(--white);
+}
+
+.coverage-list li:hover {
+    background-color: rgba(0,77,64,0.2);
+}
+#coverage-area .coverage-list li:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+
+/* Responsivo para la sección de alcance */
+@media (max-width: 768px) {
+    #coverage-area h2, #coverage-area-services h2 {
+        font-size: 2em;
+    }
+    .coverage-details {
+        font-size: 1em;
+    }
+    .coverage-list {
+        gap: 10px 20px;
+    }
+}
